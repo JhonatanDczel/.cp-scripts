@@ -31,13 +31,13 @@ def make_reference(scripts_dir, use_gh_flag, use_cli_flag):
 
                     if comments:
                         if use_gh_flag:
-                            ref_file.write("> **COMENTARIOS**\n\n")
+                            ref_file.write("> **COMENTARIOS**\n")
                         elif use_cli_flag:
                             ref_file.write("> [!NOTE]\n")
 
                         for comment in comments:
                             ref_file.write(">\n")
-                            ref_file.write(f" {comment}\n")
+                            ref_file.write(f"{comment}\n")
                         ref_file.write("\n")
 
                     extension = file.split(".")[-1]
@@ -69,7 +69,10 @@ if __name__ == "__main__":
         exit(1)
 
     scripts_directory = "./scripts"
-    make_reference(scripts_directory, args.gh, args.cli)
-    print(
-        "Referencia generadas, puedes exportarlas a pdf con tu parser favorito\nO hacer push y verlos en github :)."
-    )
+    try:
+        make_reference(scripts_directory, args.gh, args.cli)
+        print("\n✔ Referencia generadas")
+        print("1. Puedes exportarlas a PDF con tu parser favorito.")
+        print("2. O hacer push y verlas en GitHub :).\n")
+    except Exception as e:
+        print(f"Ocurrió un error durante la generación de referencias: {e}")

@@ -39,5 +39,9 @@ if __name__ == "__main__":
 
     clear_bin_directory(bin_directory)
 
-    copy_scripts_to_bin(scripts_directory, bin_directory)
-    print("Listo :)")
+    try:
+        clear_bin_directory(bin_directory)
+        copy_scripts_to_bin(scripts_directory, bin_directory)
+        print("\n✔ Listo :)")
+    except Exception as e:
+        print(f"Ocurrió un error durante la ejecución: {e}")
