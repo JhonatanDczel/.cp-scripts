@@ -21,7 +21,7 @@ jobs:
           docker run --rm \
             --volume "${{ github.workspace }}:/data" \
             --user $(id -u):$(id -g) \
-            pandoc/extra REFERENCE.md -o REFERENCE.pdf --template eisvogel --listings
+            pandoc/extra REFERENCE.md -o REFERENCE-gh.pdf --template eisvogel --listings
 
       - name: Deploy PDF to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
