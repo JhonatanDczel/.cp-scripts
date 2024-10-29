@@ -1,9 +1,12 @@
-name: Convertir a pdf y publicarlo
+name: Convert MD to PDF and Publish to GitHub Pages
 
 on:
   push:
     branches:
       - main
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -13,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Convirtiendo a pdf con docker pandoc
+      - name: Run Pandoc in Docker to convert MD to PDF
         run: |
           docker run --rm \
             --volume "${{ github.workspace }}:/data" \
