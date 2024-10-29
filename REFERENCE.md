@@ -17,14 +17,6 @@ print("hola mundo 2")
 # Este comentario no deberia estar en comentarios sino como parte del codigo
 ```
 
-## hola_mundo.sh
-
-```sh
-#!/usr/bin/env zsh
-
-echo "Hola mundo"
-```
-
 ## hola_mundo.py
 
 > **COMENTARIOS**
@@ -37,6 +29,14 @@ echo "Hola mundo"
 #!/usr/bin/env python3
 
 print("Hola mundo")
+```
+
+## hola_mundo.sh
+
+```sh
+#!/usr/bin/env zsh
+
+echo "Hola mundo"
 ```
 
 ## hola_mundo_from_file.py
