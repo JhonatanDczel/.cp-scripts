@@ -16,6 +16,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Generate REFERENCE.md
+        run: |
+          python tools/generate-reference.py
+
       - name: Run Pandoc in Docker to convert MD to PDF
         run: |
           docker run --rm \
