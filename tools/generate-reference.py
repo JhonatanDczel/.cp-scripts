@@ -29,7 +29,7 @@ def make_reference(scripts_dir):
                     ref_file.write(f"## {file}\n\n")
 
                     if comments:
-                        ref_file.write("> [!NOTE]\n")
+                        ref_file.write("> **COMENTARIOS**\n")
                         for comment in comments:
                             ref_file.write(f">\n")
                             ref_file.write(f"{comment}\n")

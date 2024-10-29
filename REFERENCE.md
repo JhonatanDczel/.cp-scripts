@@ -10,7 +10,7 @@ echo "Hola mundo"
 
 ## hola_mundo.py
 
-> [!NOTE]
+> **COMENTARIOS**
 >
 > Imprime hola mundo xd
 >
@@ -24,7 +24,7 @@ print("Hola mundo")
 
 ## hola_mundo_from_file.py
 
-> [!NOTE]
+> **COMENTARIOS**
 >
 > Escribe hola mundo por consola xd
 >
@@ -50,3 +50,4 @@ file_path = os.path.join(
 with open(file_path, "r") as f:
     print(f.read())
 ```
+
