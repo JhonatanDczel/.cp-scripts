@@ -31,11 +31,12 @@ def make_reference(scripts_dir, use_gh_flag, use_cli_flag):
 
                     if comments:
                         if use_gh_flag:
-                            ref_file.write("> **COMENTARIOS**\n")
+                            ref_file.write("> **COMENTARIOS**\n\n")
                         elif use_cli_flag:
                             ref_file.write("> [!NOTE]\n")
 
                         for comment in comments:
+                            ref_file.write(">\n")
                             ref_file.write(f" {comment}\n")
                         ref_file.write("\n")
 
@@ -61,13 +62,11 @@ if __name__ == "__main__":
         "--cli", action="store_true", help="Generar referencias para verlas localmente"
     )
 
-    # Parseo de argumentos
     args = parser.parse_args()
 
-    # Si no se pasan argumentos, mostrar el mensaje de ayuda
     if not (args.gh or args.cli):
         parser.print_help()
-        exit(1)  # Terminar el script si no se pasa ninguna opción
+        exit(1)
 
     scripts_directory = "./scripts"
     make_reference(scripts_directory, args.gh, args.cli)
