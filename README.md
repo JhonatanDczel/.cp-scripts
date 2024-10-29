@@ -51,5 +51,4 @@ Adicionalmente, en cada push se despliega automáticamente el `Script reference`
   - **Ejemplo**: `compile_exercise.sh` será llevado a `/bin` como: `cps-compile_exercise`.
 - Si necesitas que tu script use algún archivo, inclúyelos dentro de la carpeta que contiene a tu script. Si es un recurso compartido, deberías incluirlo en un directorio en `/resources`.
   - Para referenciar algún archivo, usa siempre una ruta relativa al directorio home.
-  - **Ejemplo:** Para referenciar `template-1.cpp` -> `~/.cp-scripts/public/template-1.cpp`.
-    ciar `template-1.cpp` -> `~/.cp-scripts/public/tempate-1.cpp`
+  - **Ejemplo:** Para referenciar `template-1.cpp` -> `~/.cp-scripts/public/template-1.cpp
