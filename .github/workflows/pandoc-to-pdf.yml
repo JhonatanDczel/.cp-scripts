@@ -1,4 +1,4 @@
-name: Convert MD to PDF
+name: Convertir a pdf y publicarlo
 
 on:
   push:
@@ -13,15 +13,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Run Pandoc in Docker to convert MD to PDF
+      - name: Convirtiendo a pdf con docker pandoc
         run: |
           docker run --rm \
             --volume "${{ github.workspace }}:/data" \
             --user $(id -u):$(id -g) \
             pandoc/extra REFERENCE.md -o REFERENCE.pdf --template eisvogel --listings
 
-      - name: Upload PDF to GitHub Pages or Artifacts
-        uses: actions/upload-artifact@v3
+      - name: Deploy PDF to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: REFERENCE-pdf
-          path: REFERENCE.pdf
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
