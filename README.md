@@ -2,7 +2,7 @@
 
 > [!IMPORTANT]
 > Solo probado en sistemas UNIX :v
-> 
+>
 > Si lo estás haciendo desde Windows y algo falla, abre una issue.
 
 Repositorio para los scripts que usaremos en los concursos y para generar la referencia para llevarla impresa.
@@ -20,7 +20,7 @@ Adicionalmente, en cada push se despliega automáticamente el `Script reference`
 
 1. Crea un nuevo directorio en `scripts` y agrega tu archivo ahí.
 2. ¡Listo xd! si quieres agregar comendarios, usa `# >`:
-   
+
    ```sh
    #!/usr/bin/env zsh
 
@@ -30,17 +30,19 @@ Adicionalmente, en cada push se despliega automáticamente el `Script reference`
    echo "Hola mundo"
    ```
 
-4. Ejecuta el comando `build_scripts.py` (desde el directorio principal) para exportar los scripts:
+## Tools
 
-   ```sh
-   ./tools/build_scripts.py
-   ```
+- Ejecuta el comando `build_scripts.py` (desde el directorio principal) para exportar los scripts:
 
-5. ¡Listo de nuevo xd! Sube los cambios al repositorio y se empezará el despliegue para ver el PDF. Si quieres generar el `REFERENCE.md` manualmente:
+  ```sh
+  ./tools/build_scripts.py
+  ```
 
-   ```sh
-   ./tools/generate_reference.py
-   ```
+- Sube los cambios al repositorio y se empezará el despliegue para ver el PDF. Si quieres generar el `REFERENCE.md` manualmente:
+
+  ```sh
+  ./tools/generate_reference.py --cli
+  ```
 
 ## Observaciones
 
