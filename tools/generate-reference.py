@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import argparse
 
 
 def extract_comments_and_code(file_path):
@@ -16,7 +17,7 @@ def extract_comments_and_code(file_path):
     return comments, code
 
 
-def make_reference(scripts_dir):
+def make_reference(scripts_dir, use_gh_flag, use_cli_flag):
     with open("REFERENCE.md", "w") as ref_file:
         ref_file.write("# Scripts Reference\n\n")
         for root, dirs, files in os.walk(scripts_dir):
@@ -29,10 +30,13 @@ def make_reference(scripts_dir):
                     ref_file.write(f"## {file}\n\n")
 
                     if comments:
-                        ref_file.write("> **COMENTARIOS**\n")
+                        if use_gh_flag:
+                            ref_file.write("> **COMENTARIOS**\n")
+                        elif use_cli_flag:
+                            ref_file.write("> [!NOTE]\n")
+
                         for comment in comments:
-                            ref_file.write(f">\n")
-                            ref_file.write(f"{comment}\n")
+                            ref_file.write(f" {comment}\n")
                         ref_file.write("\n")
 
                     extension = file.split(".")[-1]
@@ -46,5 +50,27 @@ def make_reference(scripts_dir):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Ejecutar desde el directorio principal, USA SIEMPRE --cli",
+        epilog="\nEjemplo: ./generate-reference.py --cli.",
+    )
+    parser.add_argument(
+        "--gh", action="store_true", help="Generar referencias para Github Actions"
+    )
+    parser.add_argument(
+        "--cli", action="store_true", help="Generar referencias para verlas localmente"
+    )
+
+    # Parseo de argumentos
+    args = parser.parse_args()
+
+    # Si no se pasan argumentos, mostrar el mensaje de ayuda
+    if not (args.gh or args.cli):
+        parser.print_help()
+        exit(1)  # Terminar el script si no se pasa ninguna opción
+
     scripts_directory = "./scripts"
-    make_reference(scripts_directory)
+    make_reference(scripts_directory, args.gh, args.cli)
+    print(
+        "Referencia generadas, puedes exportarlas a pdf con tu parser favorito\nO hacer push y verlos en github :)."
+    )

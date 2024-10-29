@@ -2,11 +2,9 @@
 
 ## hola_mundo_2.py
 
-> **COMENTARIOS**
->
-> Otro script para ver si se carga correctamente a la documentacion
->
-> Y para ver si se despliega correctamente en github actions
+> [!NOTE]
+ > Otro script para ver si se carga correctamente a la documentacion
+ > Y para ver si se despliega correctamente en github actions
 
 ```python
 #!/usr/bin/env python3
@@ -27,11 +25,9 @@ echo "Hola mundo"
 
 ## hola_mundo.py
 
-> **COMENTARIOS**
->
-> Imprime hola mundo xd
->
-> Esta es la descripcion del script
+> [!NOTE]
+ > Imprime hola mundo xd
+ > Esta es la descripcion del script
 
 ```python
 #!/usr/bin/env python3
@@ -41,15 +37,11 @@ print("Hola mundo")
 
 ## hola_mundo_from_file.py
 
-> **COMENTARIOS**
->
-> Escribe hola mundo por consola xd
->
-> Lee el hola mundo desde un archivo
->
-> Para leer el archivo se hace uso de una ruta absoluta:
->
-> "~/.cp-scripts/scripts/hola_mundo/resources/hola_mundo.txt"
+> [!NOTE]
+ > Escribe hola mundo por consola xd
+ > Lee el hola mundo desde un archivo
+ > Para leer el archivo se hace uso de una ruta absoluta:
+ > "~/.cp-scripts/scripts/hola_mundo/resources/hola_mundo.txt"
 
 ```python
 #!/usr/bin/env python3

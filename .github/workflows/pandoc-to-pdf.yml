@@ -18,7 +18,7 @@ jobs:
 
       - name: Generate REFERENCE.md
         run: |
-          python tools/generate-reference.py
+          python tools/generate-reference.py --gh
 
       - name: Run Pandoc in Docker to convert MD to PDF
         run: |
