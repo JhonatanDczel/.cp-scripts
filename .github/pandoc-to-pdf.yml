@@ -1,0 +1,27 @@
+name: Convert MD to PDF
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Pandoc in Docker to convert MD to PDF
+        run: |
+          docker run --rm \
+            --volume "${{ github.workspace }}:/data" \
+            --user $(id -u):$(id -g) \
+            pandoc/extra REFERENCE.md -o REFERENCE.pdf --template eisvogel --listings
+
+      - name: Upload PDF to GitHub Pages or Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: REFERENCE-pdf
+          path: REFERENCE.pdf
