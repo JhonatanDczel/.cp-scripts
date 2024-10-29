@@ -1,5 +1,20 @@
 # Scripts Reference
 
+## Hola_mundo_2.py
+
+> [!NOTE]
+>
+> La tercera es la vencida xd aqui vamos
+>
+> Ejemplo de dejar aqui los comentarios para la descripcion de la reference
+
+```python
+#!/usr/bin/env python3
+
+
+print("hola gente :D")
+```
+
 ## hola_mundo.sh
 
 ```sh
@@ -12,9 +27,9 @@ echo "Hola mundo"
 
 > [!NOTE]
 >
- > Imprime hola mundo xd
+> Imprime hola mundo xd
 >
- > Esta es la descripcion del script
+> Esta es la descripcion del script
 
 ```python
 #!/usr/bin/env python3
@@ -26,13 +41,13 @@ print("Hola mundo")
 
 > [!NOTE]
 >
- > Escribe hola mundo por consola xd
+> Escribe hola mundo por consola xd
 >
- > Lee el hola mundo desde un archivo
+> Lee el hola mundo desde un archivo
 >
- > Para leer el archivo se hace uso de una ruta absoluta:
+> Para leer el archivo se hace uso de una ruta absoluta:
 >
- > "~/.cp-scripts/scripts/hola_mundo/resources/hola_mundo.txt"
+> "~/.cp-scripts/scripts/hola_mundo/resources/hola_mundo.txt"
 
 ```python
 #!/usr/bin/env python3
