@@ -14,6 +14,81 @@
 
 print("hola gente :D")
 ```
+## layouts.vim
+
+```vim
+" Se usa como: vim A-Problem.cpp -S layouts.vim
+set splitright
+vs runfiles/data.in
+set splitbelow
+sp runfiles/judge.out
+sp runfiles/problem.out
+set autoread
+sp runfiles/problem.log
+set autoread
+wincmd h
+```
+> **Recursos adicionales en dir: vim-layouts**
+
+*B-Problem.cpp*
+
+```cpp
+#include<iostream>
+
+using namespace std;
+
+int main(){
+  cout << "Hellooo";
+}
+
+```
+
+*A-Problem.cpp*
+
+```cpp
+#include<iostream>
+
+using namespace std;
+
+int main(){
+  string str;
+  getline(cin, str);
+  cout << "Esta es la salida del codigo\n";
+  cout << "Data.in: " << str;
+}
+
+```
+
+> **Recursos adicionales en dir: runfiles**
+
+*problem.out*
+
+```out
+Esta es la salida del codigo
+Data.in: Aqui deberian ir los datos de entrada
+```
+
+*data.in*
+
+```in
+Aqui deberian ir los datos de entrada
+
+```
+
+*judge.out*
+
+```out
+Aqui deberia ir la salida esperada
+
+```
+
+*problem.log*
+
+```log
+> Time: 0.00 s
+> Memory: 3704 KB
+
+```
 
 ## hola_mundo.py
 
@@ -28,7 +103,6 @@ print("hola gente :D")
 
 print("Hola mundo")
 ```
-
 ## hola_mundo.sh
 
 ```sh
@@ -36,7 +110,6 @@ print("Hola mundo")
 
 echo "Hola mundo"
 ```
-
 ## hola_mundo_from_file.py
 
 > **COMENTARIOS**
@@ -64,5 +137,13 @@ file_path = os.path.join(
 # Este comentario deberia ser parte del codigo y no de los comentarios
 with open(file_path, "r") as f:
     print(f.read())
+```
+> **Recursos adicionales en dir: resources**
+
+*hola_mundo.txt*
+
+```txt
+Hola mundo desde un archivo :>
+
 ```
 

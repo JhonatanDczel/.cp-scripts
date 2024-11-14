@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-import os
+
 import argparse
+import os
 
 
 def extract_comments_and_code(file_path):
     comments = []
     code = []
 
-    with open(file_path, "r") as f:
+    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
         for line in f:
             if line.strip().startswith("# >") and not line.strip().startswith("#!"):
                 comments.append(line.strip()[2:])
@@ -21,33 +22,65 @@ def make_reference(scripts_dir, use_gh_flag, use_cli_flag):
     with open("REFERENCE.md", "w") as ref_file:
         ref_file.write("# Scripts Reference\n\n")
         for root, dirs, files in os.walk(scripts_dir):
+            main_scripts = []
+            additional_files = []
+
             for file in files:
-                if file.endswith(".sh") or file.endswith(".py"):
-                    file_path = os.path.join(root, file)
+                file_path = os.path.join(root, file)
 
-                    comments, code = extract_comments_and_code(file_path)
+                if (
+                    file.endswith(".sh")
+                    or file.endswith(".py")
+                    or file.endswith(".vim")
+                ):
+                    main_scripts.append(file_path)
+                elif file == "executable" or file.endswith(
+                    (".png", ".jpg", ".jpeg", ".gif", ".bin", ".exe")
+                ):
+                    continue
+                else:
+                    additional_files.append(file_path)
 
-                    ref_file.write(f"## {file}\n\n")
+            for script in main_scripts:
+                comments, code = extract_comments_and_code(script)
+                script_name = os.path.basename(script)
 
-                    if comments:
-                        if use_gh_flag:
-                            ref_file.write("> **COMENTARIOS**\n")
-                        elif use_cli_flag:
-                            ref_file.write("> [!NOTE]\n")
+                ref_file.write(f"## {script_name}\n\n")
 
-                        for comment in comments:
-                            ref_file.write(">\n")
-                            ref_file.write(f"{comment}\n")
-                        ref_file.write("\n")
+                if comments:
+                    if use_gh_flag:
+                        ref_file.write("> **COMENTARIOS**\n")
+                    elif use_cli_flag:
+                        ref_file.write("> [!NOTE]\n")
 
-                    extension = file.split(".")[-1]
+                    for comment in comments:
+                        ref_file.write(">\n")
+                        ref_file.write(f"{comment}\n")
+                    ref_file.write("\n")
 
-                    if extension == "py":
-                        extension = "python"
+                extension = script_name.split(".")[-1]
+                if extension == "py":
+                    extension = "python"
 
+                ref_file.write(f"```{extension}\n")
+                ref_file.writelines(code)
+                ref_file.write("```\n")
+
+            if additional_files:
+                ref_file.write(
+                    f"> **Recursos adicionales en dir: {os.path.basename(root)}**\n\n"
+                )
+                for additional_file in additional_files:
+                    additional_file_name = os.path.basename(additional_file)
+                    extension = additional_file_name.split(".")[-1]
+                    ref_file.write(f"*{additional_file_name}*\n\n")
                     ref_file.write(f"```{extension}\n")
-                    ref_file.writelines(code)
-                    ref_file.write("```\n\n")
+                    with open(
+                        additional_file, "r", encoding="utf-8", errors="ignore"
+                    ) as f:
+                        content = f.readlines()
+                    ref_file.writelines(content)
+                    ref_file.write("\n```\n\n")
 
 
 if __name__ == "__main__":
