@@ -32,6 +32,7 @@ def make_reference(scripts_dir, use_gh_flag, use_cli_flag):
                     file.endswith(".sh")
                     or file.endswith(".py")
                     or file.endswith(".vim")
+                    or file.endswith("rc")
                 ):
                     main_scripts.append(file_path)
                 elif file == "executable" or file.endswith(

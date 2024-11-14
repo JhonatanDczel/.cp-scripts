@@ -1,5 +1,100 @@
 # Scripts Reference
 
+## .vimrc
+
+```vimrc
+" Cargar configuraciones modulares
+source ~/.vim/configs/general.vim
+source ~/.vim/configs/keybindings.vim
+source ~/.vim/configs/functions.vim
+source ~/.vim/configs/settings.vim
+```
+## general.vim
+
+```vim
+syntax on
+filetype on
+set backspace=indent,eol,start
+set clipboard=unnamedplus
+set autowrite
+set mouse=a
+colorscheme habamax
+```
+## settings.vim
+
+```vim
+set number
+set relativenumber
+set tabstop=2
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set smartindent
+set expandtab
+set cindent
+set scrolloff=8
+set sidescrolloff=8
+set wildmenu
+set completeopt=menu,menuone,noselect
+```
+## keybindings.vim
+
+```vim
+" Leader Key
+let mapleader = " "
+
+" Basic Keybindings
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>wq :wq<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>wr <C-w>r
+nnoremap <Leader>bn :bnext<CR>
+
+" Navigation
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+
+" Window Navigation
+nnoremap <Leader>k :wincmd +<CR>
+nnoremap <Leader>j :wincmd -<CR>
+nnoremap <Leader>l :wincmd ><CR>
+nnoremap <Leader>h :wincmd <<CR>
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+nnoremap <C-h> <C-W>h
+```
+## functions.vim
+
+```vim
+" Function for Compilation
+function! Compile()
+  execute "w"
+  silent execute "!g++ % -o runfiles/executable > runfiles/problem.log 2>&1 && echo 'Compilacion exitosa :3' >> runfiles/problem.log"
+  redraw!
+endfunction
+
+" Function for Execution
+function! Execute()
+  silent execute "!./runfiles/executable < runfiles/data.in > runfiles/problem.out"
+  if v:shell_error == 0
+    silent execute "!echo 'Ejecución completa:' > runfiles/problem.log"
+    silent execute "!/usr/bin/time -o runfiles/problem.log -f \"> Time: \\%S s\\n> Memory: \\%M KB\" ./runfiles/executable < runfiles/data.in > /dev/null"
+  else
+    silent execute "!echo 'Error en la ejecución' > runfiles/problem.log"
+  endif
+  redraw!
+endfunction
+
+nnoremap <Leader>cc :call Compile()<CR>
+nnoremap <Leader>ce :call Execute()<CR>
+nnoremap <F5> <Leader>cc
+nnoremap <F6> <Leader>ce
+nmap <Leader>cr <Leader>cc<CR><Leader>ce
+```
 ## layouts.vim
 
 ```vim
