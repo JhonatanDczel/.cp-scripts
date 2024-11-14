@@ -1,19 +1,5 @@
 # Scripts Reference
 
-## Hola_mundo_2.py
-
-> **COMENTARIOS**
->
-> La tercera es la vencida xd aqui vamos
->
-> Ejemplo de dejar aqui los comentarios para la descripcion de la reference
-
-```python
-#!/usr/bin/env python3
-
-
-print("hola gente :D")
-```
 ## layouts.vim
 
 ```vim
